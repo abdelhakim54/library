@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    background-color: #f1f5f9;
+    display: flex;
+    justify-content: space-between;
+    padding: 25px;
+}
+
+h2{
+    margin-left: 40px;
+    font-size: 32px;
+}
+
+button{
+    padding: 10px 16px;
+    border-radius: 10px;
+    background-color: #0284c7;
+    margin-right: 30px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+button:hover{
+    background-color: white;
+    color: #0284c7;
+}
