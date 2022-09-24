@@ -1,4 +1,11 @@
+:root{
+    --read:#4ade80;
+    --notRead:#9ca3af;
+    font-size: 25px;
+}
+
 *{
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
@@ -13,12 +20,12 @@ header{
     display: flex;
     justify-content: space-between;
     padding: 25px;
-    width: 100%;
+    width: 100vw;
 }
 
 h2{
     margin-left: 40px;
-    font-size: 42px;
+    font-size: 1.5rem;
 }
 
 button{
@@ -28,7 +35,7 @@ button{
     margin-right: 30px;
     color: white;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 0.7rem;
 }
 
 button:hover{
@@ -44,13 +51,14 @@ div.status{
     justify-content: flex-end;   
     padding: 10px;
     width: 80%;
-
+    margin-bottom: 1em;
 }
 
 .read, .not-read{
     display: flex;
     gap: 5px;
     padding: 4px;
+    font-size: 0.7rem;
 }
 
 div.read .img, div.not-read .img{
@@ -60,9 +68,150 @@ div.read .img, div.not-read .img{
 }
 
 div.read .img{
-    background-color: #bbf7d0;
+    background-color: var(--read);
 }
 
 div.not-read .img{
-    background-color: #e5e7eb;
+    background-color: var(--notRead);
 }
+
+
+/*books*/
+
+div.books{
+    width: 80%;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+div.book{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 250px;
+    padding: 20px;
+    color: white;
+    font-size: 0.7rem;
+}
+
+.book .delete{
+    align-self: flex-end;
+    font-size: 1.2rem;
+}
+
+.book .delete:hover{
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.book.read-template{
+    background-color: var(--read);
+}
+
+.book.not-read-template{
+    background-color: var(--notRead);
+    color: black;
+}
+
+.book .title{
+    font-size: 1.2rem;
+}
+
+div.book > div{
+    margin-bottom: 3px;
+}
+
+.book .read-status{
+    padding: 2px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    font-size: 0.6rem;
+}
+
+/*add pop-up modal*/
+.popup-modal {
+    background-color: lightgrey;
+    padding: 32px 64px;
+    border-radius: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    opacity: 0%;
+    text-align: center;
+  }
+
+.popup-modal form{
+    padding: 2px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+form button{
+    width: 100%;
+}
+
+.popup-modal div{
+    width: 100%;
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 0.8rem;
+}
+
+.popup-modal h2{
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+form .read{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+    gap: 10px;
+}
+
+form .read input{
+    width: 20px;
+}
+
+.popup-modal input{
+    border: 0px;
+    padding: 6px 12px;
+    height: 30px;
+    width: 100%;
+    border-radius: 6px;
+}
+
+.popup-modal input:focus{
+    border: 0px;
+}
+
+.popup-modal input::placeholder{
+    font-size: 0.7rem;
+}
+
+.backdrop {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    background: #000;
+    opacity: 0%;
+  }
+
+.popup-modal.show {
+    opacity: 100%;
+    pointer-events: all;
+  }
+
+.backdrop.show{
+    opacity: 30%;
+  }

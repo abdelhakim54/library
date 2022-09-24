@@ -9,9 +9,10 @@
     <script src="js/script.js" defer></script>
 </head>
 <body>
+    <div class="backdrop"></div>
     <header>
         <h2>Library</h2>
-        <button>add book</button>
+        <button id="add-book">add book</button>
     </header>
     <div class="status">
         <div class="read">
@@ -26,6 +27,46 @@
                 Not Read
             </div>
         </div>
+    </div>
+    <div class="books">
+        <div class="book read-template"  data-id="0">
+            <div class="delete">×</div>
+            <div class="title">Game Of Thrones</div>
+            <div>By: George R.R.Martin</div>
+            <div>Number of pages: 694</div>
+            <div>Language: English</div>
+            <div class="read-status">
+                <label for="read">mark as Read:</label>
+                <input class="marked-read" required type="checkbox" name="isRead" checked>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup-modal">
+        <h2>add new Book</h2>
+        <form action="" id="my-form">
+            <div>
+                <label for="title">Book Title</label>
+                <input required type="text" id="title" name="title" placeholder="title">
+            </div>
+            <div>
+                <label for="author">Book Author</label>
+                <input required type="text" id="author" placeholder="author" name="author">
+            </div>
+            <div>
+                <label for="pages">Number Of Pages</label>
+                <input required type="number" name="pages" id="pages" placeholder="Number Of Pages">
+            </div>
+            <div>
+                <label for="language">Language</label>
+                <input required type="text" id="language" name="language" placeholder="Language">
+            </div>
+            <div class="read">
+                <label for="status">Did you read it ?</label>
+                <input type="checkbox" id="status">
+            </div>
+            <button type="submit" id="close-modal">Add</button>
+        </form>
     </div>
 </body>
 </html>
