@@ -13,6 +13,9 @@ let num = 0;
 const add = document.getElementById("add-book");
 const createBook = document.getElementById('close-modal');
 const books = document.querySelector(".books");
+const modal = document.querySelector(".popup-modal")
+const form = document.querySelector('#my-form')
+
 
 function Book(author, title, numberOfPages, language, isRead){
     this.author = author;
@@ -89,11 +92,12 @@ function updateBooksGrid(){
 }
 
 
-function toggleModalAddBook() {
-    const modalDiv = document.querySelector('.popup-modal');
-    const backdrop = document.querySelector('.backdrop')
-    modalDiv.classList.toggle('show');
-    backdrop.classList.toggle('show');
+function openModal(){
+    modal.classList.add('visible');
+}
+
+function closeModal(){
+    modal.classList.remove('visible');
 }
 
 function getBookFromInput(){
@@ -101,23 +105,26 @@ function getBookFromInput(){
     const author = document.getElementById("author").value;
     const language = document.getElementById("language").value;
     const pages = document.getElementById("pages").value;
-    const isRead = document.getElementById("status").checked;
+    const isRead = document.getElementById("isRead").checked;
 
-    return new Book(title, author, pages, language, isRead);
-    
+    return new Book( author,title, pages, language, isRead);
 }
 
+add.addEventListener("click", openModal)
 
-
-add.addEventListener("click", toggleModalAddBook)
-
+modal.addEventListener("click", function(e){
+    if(e.target !== this){
+        return
+    }
+    closeModal();
+});
 
 
 createBook.addEventListener("click", function(e){
     e.preventDefault();
     const newBook = getBookFromInput();
     addBookToLibrary(newBook);
-    toggleModalAddBook();
+    closeModal();
     updateBooksGrid();
     })
 
@@ -134,6 +141,10 @@ books.addEventListener('click', function(e){
     if(e.target.classList.contains("marked-read")){
         e.target.parentNode.parentNode.classList.toggle("read-template");
         e.target.parentNode.parentNode.classList.toggle("not-read-template");
-
     }
+})
+
+document.querySelector("#isRead").addEventListener("click", function(e){
+    e.preventDefault();
+
 })

@@ -9,7 +9,6 @@
     <script src="js/script.js" defer></script>
 </head>
 <body>
-    <div class="backdrop"></div>
     <header>
         <h2>Library</h2>
         <button id="add-book">add book</button>
@@ -36,15 +35,15 @@
             <div>Number of pages: 694</div>
             <div>Language: English</div>
             <div class="read-status">
-                <label for="read">mark as Read:</label>
-                <input class="marked-read" required type="checkbox" name="isRead" checked>
+                <label for="isRead">mark as Read:</label>
+                <input class="marked-read" required id="isRead" type="checkbox" name="isRead" checked>
             </div>
         </div>
     </div>
 
     <div class="popup-modal">
-        <h2>add new Book</h2>
-        <form action="" id="my-form">
+        <form method="get" id="my-form">
+            <h3>add new book</h3>
             <div>
                 <label for="title">Book Title</label>
                 <input required type="text" id="title" name="title" placeholder="title">
@@ -62,8 +61,8 @@
                 <input required type="text" id="language" name="language" placeholder="Language">
             </div>
             <div class="read">
-                <label for="status">Did you read it ?</label>
-                <input type="checkbox" id="status">
+                <label for="isRead">Did you read it ?</label>
+                <input type="checkbox" id="isRead">
             </div>
             <button type="submit" id="close-modal">Add</button>
         </form>

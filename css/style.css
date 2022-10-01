@@ -133,24 +133,37 @@ div.book > div{
 
 /*add pop-up modal*/
 .popup-modal {
-    background-color: lightgrey;
-    padding: 32px 64px;
-    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.4); 
     position: fixed;
-    top: 50%;
-    left: 50%;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+    top: 0;
+    left: 0;
+    opacity: 0;
     transform-origin: center;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    opacity: 0%;
     text-align: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
+.popup-modal.visible{
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+}
+
 .popup-modal form{
-    padding: 2px;
+    border-radius: 10px;
+    padding: 32px 64px;
+    background-color: #F0EEF1;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    position: absolute;
+    transform-origin: center;
 }
 
 form button{
@@ -167,7 +180,7 @@ form button{
     font-size: 0.8rem;
 }
 
-.popup-modal h2{
+.popup-modal h3{
     margin-bottom: 10px;
     font-size: 1.2rem;
 }
@@ -198,20 +211,3 @@ form .read input{
 .popup-modal input::placeholder{
     font-size: 0.7rem;
 }
-
-.backdrop {
-    pointer-events: none;
-    position: fixed;
-    inset: 0;
-    background: #000;
-    opacity: 0%;
-  }
-
-.popup-modal.show {
-    opacity: 100%;
-    pointer-events: all;
-  }
-
-.backdrop.show{
-    opacity: 30%;
-  }
