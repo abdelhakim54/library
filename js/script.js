@@ -101,11 +101,11 @@ function closeModal(){
 }
 
 function getBookFromInput(){
-    const title = document.getElementById("title").value;
-    const author = document.getElementById("author").value;
-    const language = document.getElementById("language").value;
-    const pages = document.getElementById("pages").value;
-    const isRead = document.getElementById("isRead").checked;
+    const title = document.querySelector(".popup-modal #title").value;
+    const author = document.querySelector(".popup-modal #author").value;
+    const language = document.querySelector(".popup-modal #language").value;
+    const pages = document.querySelector(".popup-modal #pages").value;
+    const isRead = document.querySelector(".popup-modal #isRead").checked;
 
     return new Book( author,title, pages, language, isRead);
 }
@@ -120,12 +120,12 @@ modal.addEventListener("click", function(e){
 });
 
 
-createBook.addEventListener("click", function(e){
+form.addEventListener("submit", function(e){
     e.preventDefault();
     const newBook = getBookFromInput();
     addBookToLibrary(newBook);
-    closeModal();
     updateBooksGrid();
+    closeModal();
     })
 
 books.addEventListener("click", function(e){
