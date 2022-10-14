@@ -1,34 +1,45 @@
-let myLibrary = [
-    {
-        author:'George R.R.Martin',
-        title:'Game Of Thrones',
-        numberOfPages:694,
-        language:'English',
-        isRead: true
+class Book{
+    
+    constructor(author, title, numberOfPages, language, isRead){
+        this.author = author;
+        this.title = title;
+        this.numberOfPages = numberOfPages;
+        this.language = language;
+        this.isRead = isRead;
     }
-]
+}
 
-let num = 0;
+class Library {
+    constructor () {
+        this.myLibrary = [{
+            author:'George R.R.Martin',
+            title:'Game Of Thrones',
+            numberOfPages:694,
+            language:'English',
+            isRead: true
+        }];
+    }   
 
+    getMyLibrary(){
+        return this.myLibrary;
+    }
+    
+    addBookToLibrary(book){
+        this.myLibrary.push(book);
+    }
+    
+}
+
+let library = new Library();
+
+
+/*UI */
 const add = document.getElementById("add-book");
 const createBook = document.getElementById('close-modal');
 const books = document.querySelector(".books");
 const modal = document.querySelector(".popup-modal")
 const form = document.querySelector('#my-form')
 
-
-function Book(author, title, numberOfPages, language, isRead){
-    this.author = author;
-    this.title = title;
-    this.numberOfPages = numberOfPages;
-    this.language = language;
-    this.isRead = isRead;
-}
-
-function addBookToLibrary(book){
-
-    myLibrary.push(book);
-}
 
 function resetBookGrid(){
     books.textContent = "";
@@ -37,7 +48,7 @@ function resetBookGrid(){
 function updateBooksGrid(){
     resetBookGrid();
     num = 0;
-    for (let book of myLibrary) {
+    for (let book of library.getMyLibrary()) {
         const bookContainer = document.createElement("div");
         bookContainer.classList.add("book");
 
@@ -123,15 +134,15 @@ modal.addEventListener("click", function(e){
 form.addEventListener("submit", function(e){
     e.preventDefault();
     const newBook = getBookFromInput();
-    addBookToLibrary(newBook);
+    library.addBookToLibrary(newBook);
     updateBooksGrid();
     closeModal();
     })
 
 books.addEventListener("click", function(e){
     if( e.target.classList.contains("delete")){
-        const index = e.target.parentNode.dataset.id;
-        myLibrary.splice(index, 1);
+        const index = +e.target.parentNode.dataset.id;
+        library.getMyLibrary().splice(index, 1);
         updateBooksGrid();
         num--;
     }
@@ -142,9 +153,4 @@ books.addEventListener('click', function(e){
         e.target.parentNode.parentNode.classList.toggle("read-template");
         e.target.parentNode.parentNode.classList.toggle("not-read-template");
     }
-})
-
-document.querySelector("#isRead").addEventListener("click", function(e){
-    e.preventDefault();
-
 })
